@@ -43,7 +43,7 @@ stage ('DeployToProduction') {
     steps {
         input 'Deploy to Production'
         milestone(1)
-        withCredentials ([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
+        withCredentials ([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'deploy', passwordVariable: '+%KwQ7_q')]) {
             script {
                 sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@${env.prod_ip} \"docker pull nilufarkh/train-schedule:${env.BUILD_NUMBER}\""
                 try {
